@@ -26,8 +26,10 @@ app.get('/api/hello', function (req, res) {
 
 app.get('api/whoami', (req, res) => {
   res.json({
-    ipaddress: 192.158
-  })
+    ipaddress: req.socket.remoteAddress,
+    language: req.headers['accept-language'],
+    software: req.headers['user-agent']
+  });
 });
 
 // listen for requests :)
